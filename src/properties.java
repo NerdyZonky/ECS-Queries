@@ -13,9 +13,8 @@ public class properties {
     private String database;
     private String user;
     private String password;
-    private String programm;
     private String dbEngine;
-    
+    private String tableSuffix;
 
     private String view;
     private String search;
@@ -25,15 +24,15 @@ public class properties {
     
     Properties prop = new Properties();
     
-    public void setProperty(String server, String port, String database, String user, String password,String programm,String dbEngine){
+    public void setProperty(String server, String port, String database, String user, String password,String dbEngine,String tableSuffix){
         
         this.server = server;
         this.port = port;
         this.database =database;
         this.user = user;
         this.password = password;
-        this.programm = programm;
         this.dbEngine = dbEngine;
+        this.tableSuffix = tableSuffix;
        
        
 	OutputStream output = null;
@@ -48,8 +47,8 @@ public class properties {
 		this.prop.setProperty("database", this.database);
                 this.prop.setProperty("user", this.user);
                 this.prop.setProperty("password", this.password);
-                this.prop.setProperty("programm", this.programm);
                 this.prop.setProperty("engine", this.dbEngine);
+                this.prop.setProperty("tableSuffix", this.tableSuffix);
 
 		// save properties to project root folder
 		prop.store(output, null);
@@ -107,12 +106,12 @@ public class properties {
             return prop.getProperty("password");
         }
         
-        if("programm".equals(name)){
-            return prop.getProperty("programm");
-        }
-        
         if("engine".equals(name)){
             return prop.getProperty("engine");
+        }
+        
+        if("tableSuffix".equals(name)){
+            return prop.getProperty("tableSuffix");
         }
         
         return null;

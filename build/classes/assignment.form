@@ -64,7 +64,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton1" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="427" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
@@ -106,12 +106,13 @@
                                   <Component id="offerNotDoneSumEK" max="32767" attributes="0"/>
                                   <Component id="offerNotDoneSumNetto" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
+                              <EmptySpace pref="43" max="32767" attributes="0"/>
+                              <Component id="jButton2" min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Component id="offerNotDoneSearchFrom" min="-2" pref="120" max="-2" attributes="0"/>
@@ -120,10 +121,8 @@
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="offerNotDoneSearchTo" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="offerNotDoneSearch" min="-2" pref="29" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="offerNotDoneSearch" min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -142,18 +141,15 @@
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="offerNotDoneSearchFrom" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="offerNotDoneSearchTo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="offerNotDoneSearch" alignment="1" min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="offerNotDoneSearch" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="offerNotDoneSearchFrom" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="offerNotDoneSearchTo" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="528" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -163,6 +159,7 @@
                   <Component id="countOfferDone" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="offerNotDoneSumEK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton2" alignment="3" pref="43" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -182,7 +179,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/bars.png"/>
+          <Image iconType="2" name="/home/marco/Downloads/menu.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
@@ -238,8 +235,9 @@
     <Component class="javax.swing.JButton" name="offerNotDoneSearch">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/search(2).png"/>
+          <Image iconType="3" name="/images/database(2).png"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Suche"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -346,6 +344,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/notebook.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CSV Export"/>
       </Properties>
       <Events>
