@@ -10,6 +10,7 @@ public class connectDB {
     private String user;
     private String password;
     private String url;
+    private String driver;
     private boolean pass = false;
     
     
@@ -22,10 +23,20 @@ public class connectDB {
         this.database = database;
         this.user = user;
         this.password = password;
-        this.url = "jdbc:sqlserver://" + this.server + ":" + this.port +";DatabaseName=" + this.database;
-    
+        
+        if(prop.getProperty("engine").equals("MS-SQL")){
+            this.url = "jdbc:sqlserver://" + this.server + ":" + this.port +";DatabaseName=" + this.database;
+            this.driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        }
+        
+        else{
+            this.url = "jdbc:mysql://" + this.server + ":" + this.port +";DatabaseName=" + this.database;
+            this.driver = "com.mysql.jdbc.Driver";
+        }
+        
+        
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName(driver);
         } catch (ClassNotFoundException e) {
             System.err.println(e);
             System.out.println("Initialisierung fehlgeschlagen.Es wurde kein Treiber gefunden!");

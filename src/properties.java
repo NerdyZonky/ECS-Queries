@@ -13,7 +13,10 @@ public class properties {
     private String database;
     private String user;
     private String password;
+    private String programm;
+    private String dbEngine;
     
+
     private String view;
     private String search;
     private String searchFrom;
@@ -22,15 +25,16 @@ public class properties {
     
     Properties prop = new Properties();
     
-    public void setProperty(String server, String port, String database, String user, String password){
+    public void setProperty(String server, String port, String database, String user, String password,String programm,String dbEngine){
         
         this.server = server;
         this.port = port;
         this.database =database;
         this.user = user;
         this.password = password;
-        
-        
+        this.programm = programm;
+        this.dbEngine = dbEngine;
+       
        
 	OutputStream output = null;
 
@@ -44,6 +48,8 @@ public class properties {
 		this.prop.setProperty("database", this.database);
                 this.prop.setProperty("user", this.user);
                 this.prop.setProperty("password", this.password);
+                this.prop.setProperty("programm", this.programm);
+                this.prop.setProperty("engine", this.dbEngine);
 
 		// save properties to project root folder
 		prop.store(output, null);
@@ -99,6 +105,14 @@ public class properties {
         
         if("password".equals(name)){
             return prop.getProperty("password");
+        }
+        
+        if("programm".equals(name)){
+            return prop.getProperty("programm");
+        }
+        
+        if("engine".equals(name)){
+            return prop.getProperty("engine");
         }
         
         return null;
