@@ -15,8 +15,18 @@ public class assignment extends javax.swing.JFrame {
     public assignment() {
         initComponents();
         
+        SQLQueries sql = new SQLQueries();
+        queries queries = new queries();
+        
         if(prop.getView("view").equals("assignmentNotDone")){
             this.jLabel2.setText("nicht erledige Aufträge");
+            this.offerNotDoneTable.setModel(queries.getAssignmentModel(sql.getSQLAssignmentNotDoneModel()));
+            this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLCountAssigmentNotDone()));
+            this.offerNotDoneSumEK.setText(queries.sqlCommand(sql.getSQLSumEkAssigmentNotDone()));
+            this.offerNotDoneSumNetto.setText(queries.sqlCommand(sql.getSQLSumNettoAssigmentNotDone()));
+            this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssigmentDone()));
+            this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssigmentAll()));
+            this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
         }
         
         if(prop.getView("view").equals("assignmentWithoutOffer")){
@@ -27,6 +37,13 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneSumEK.setVisible(false);
             this.jLabel8.setVisible(false);
             this.offerNotDoneSumNetto.setVisible(false);
+            
+            this.offerNotDoneTable.setModel(queries.getOfferWithoutAssignmentModel(sql.getSQLAssignmentWithoutOfferModel()));
+            this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithoutOffer()));
+            this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithOffer()));
+            this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssignmentAllOfferWithoutAssignment()));
+            this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText())); 
+            
             
 
             
@@ -43,6 +60,14 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneSearchFrom.setVisible(false);
             this.jLabel4.setVisible(false);
             this.offerNotDoneSearchTo.setVisible(false);
+            
+            
+            this.offerNotDoneTable.setModel(queries.getNegativeStockModel(sql.getSQLNegativeStockModel()));
+            this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLCountNegativeStock()));
+            this.offerNotDonePercent.setText(queries.sqlCommand(sql.getSQLSumNegativeStock()));
+            this.countOfferDone.setText(queries.sqlCommand(sql.getSQLSumPostitiveStock()));
+            this.offerAll.setText(queries.sqlCommand(sql.getSQCountNullStock()));
+            this.offerNotDoneSumEK.setText(queries.sqlCommand(sql.getSQLSumPostitiveStock()));
 
         }
    
