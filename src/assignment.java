@@ -98,7 +98,7 @@ public class assignment extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/bars.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bars.png"))); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +131,7 @@ public class assignment extends javax.swing.JFrame {
             }
         });
 
-        offerNotDoneSearch.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/search(2).png")); // NOI18N
+        offerNotDoneSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search(2).png"))); // NOI18N
         offerNotDoneSearch.setBorder(null);
         offerNotDoneSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

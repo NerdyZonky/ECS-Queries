@@ -93,7 +93,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/marco/Downloads/buildings(2).png"/>
+              <Image iconType="3" name="/images/buildings(2).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value=" negativer Lagerbestand"/>
           </Properties>
@@ -104,7 +104,7 @@
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/marco/Downloads/boxes.png"/>
+              <Image iconType="3" name="/images/boxes.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value=" Lagerkennziffern"/>
           </Properties>
@@ -114,7 +114,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/monitor(5).png"/>
+          <Image iconType="3" name="/images/monitor(5).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="  nicht erledige Auftr&#xe4;ge"/>
       </Properties>
@@ -125,7 +125,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/monitor(7).png"/>
+          <Image iconType="3" name="/images/monitor(7).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value=" Angebote ohne Auftr&#xe4;ge"/>
       </Properties>

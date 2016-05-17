@@ -182,7 +182,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/bars.png"/>
+          <Image iconType="3" name="/images/bars.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
@@ -238,7 +238,7 @@
     <Component class="javax.swing.JButton" name="offerNotDoneSearch">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/search(2).png"/>
+          <Image iconType="3" name="/images/search(2).png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>

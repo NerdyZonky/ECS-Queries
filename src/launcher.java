@@ -22,7 +22,7 @@ public class launcher extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/buildings(2).png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buildings(2).png"))); // NOI18N
         jButton1.setText(" negativer Lagerbestand");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -30,7 +30,7 @@ public class launcher extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/boxes.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boxes.png"))); // NOI18N
         jButton4.setText(" Lagerkennziffern");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -54,7 +54,7 @@ public class launcher extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jButton2.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/monitor(5).png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/monitor(5).png"))); // NOI18N
         jButton2.setText("  nicht erledige Aufträge");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +62,7 @@ public class launcher extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/monitor(7).png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/monitor(7).png"))); // NOI18N
         jButton3.setText(" Angebote ohne Aufträge");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
