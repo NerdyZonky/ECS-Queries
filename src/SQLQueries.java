@@ -10,7 +10,8 @@ public class SQLQueries {
     Statement stm;
     
     properties prop = new properties();
-    String tableSuffix = prop.getProperty("tableSuffix");
+    private String tableSuffix = prop.getProperty("tableSuffix");
+    private String engine = prop.getProperty("engine");
    
 
     public SQLQueries(){}
@@ -25,104 +26,245 @@ public class SQLQueries {
     
     public String getSQLAssignmentNotDoneModel(){
         
+        if(this.engine.equals("MySQL")){
+            return "SELECT Nr,Date, KdMatch, Netto0, Ek, RefAngebot, AhTxt FROM TFW_M001_Ah WHERE Erledigt = 0 ORDER BY Date DESC ";
+        }
         
-       
-        return "SELECT Ah.Nr,Ah.Date, Ah.KdMatch, Ah.Netto0, Ah.Ek, Ah.RefAngebot, Ah.AhTxt FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0 ORDER BY " +tableSuffix+ ".Ah.Date DESC;"; 
-
+        else{
+            return "SELECT Ah.Nr,Ah.Date, Ah.KdMatch, Ah.Netto0, Ah.Ek, Ah.RefAngebot, Ah.AhTxt FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0 ORDER BY " +tableSuffix+ ".Ah.Date DESC;"; 
+        }
     }
       
     public String getSQLAssigmentNotDoneModelSearch(){
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT Nr,Date, KdMatch, Netto0, Ek, RefAngebot, RefRechnung, AhTxt FROM " +tableSuffix+ "_Ah WHERE Erledigt = 0 AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"'" + "ORDER BY Date DESC;";
+        }
+        
+        else{
         return "SELECT Ah.Nr,Ah.Date, Ah.KdMatch, Ah.Netto0, Ah.Ek, Ah.RefAngebot, Ah.RefRechnung, Ah.AhTxt FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0 AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"'" + "ORDER BY " +tableSuffix+ ".Ah.Date DESC;";
-
+        
+        }
     }
     
    
     public String getSQLCountAssigmentNotDone() {
-            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = '0';";         
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Ah WHERE Erledigt = '0';"; 
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = '0';";
+        }
+            
     }
 
     public String getSQLCountAssigmentNotDoneSearch() {
-        return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = '0'AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Ah WHERE Erledigt = '0'AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
+        else{
+            return "SELECT COUNT(*) FROM " +tableSuffix+ ".Ah WHERE Ah.Erledigt = '0'AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
     }
 
     public String getSQLSumEkAssigmentNotDone(){
-        return "SELECT SUM(Ah.Ek) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0;";
-    
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT SUM(Ek) FROM " +tableSuffix+ "_Ah WHERE Erledigt = 0;";
+        }
+        
+        else{
+            return "SELECT SUM(Ah.Ek) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0;";
+        }
+
     }
     
     public String getSQLSumEkAssigmentNotDoneSearch(){
-        return "SELECT SUM(Ah.Ek) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0 AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT SUM(Ek) FROM " +tableSuffix+ "_Ah WHERE Erledigt = 0 AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
+        else{
+            return "SELECT SUM(Ah.Ek) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0 AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        } 
     }
     
     
     public String getSQLSumNettoAssigmentNotDone(){
-        return "SELECT SUM(Ah.Netto0) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0;";
         
+        if(this.engine.equals("MySQL")){
+           return "SELECT SUM(Netto0) FROM " +tableSuffix+ "_Ah WHERE Erledigt = 0;"; 
+        }
+        
+        else{
+            return "SELECT SUM(Ah.Netto0) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0;";
+        }       
     }
     
     public String getSQLSumNettoAssigmentNotDoneSearch(){    
-        return "SELECT SUM(Ah.Netto0) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0 AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT SUM(Netto0) FROM " +tableSuffix+ "_Ah WHERE Erledigt = 0 AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
+        else{
+            return "SELECT SUM(Ah.Netto0) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = 0 AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
     }
     
     
+    
     public String getSQLCountAssigmentDone(){
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Ah WHERE Erledigt = '1';";
+        }
+        
+        else{
             return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = '1';";
+        }     
     }
     
     
     public String getSQLCountAssigmentDoneSearch(){
         
-            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = '1' AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        if(this.engine.equals("MySQL")){
+             return "SELECT COUNT(*) FROM " +tableSuffix+ "_Ah WHERE Erledigt = '1' AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
         }
+        
+        else{
+            return "SELECT COUNT(*) FROM " +tableSuffix+ ".Ah WHERE " +tableSuffix+ ".Ah.Erledigt = '1' AND Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }   
+    }
     
     
     public String getSQLCountAssigmentAll(){
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Ah;";
+        }
+        
+        else{
             return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah;";
+        }     
     }
 
     public String getSQLCountAssigmentAllSearch(){
-        return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah WHERE Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Ah WHERE Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Ah WHERE Ah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
     }
     
     
     //WITHOUT OFFER METHODS
     
     public String getSQLAssignmentWithoutOfferModel(){
-        return "SELECT Kah.Nr,Kah.Date,Kah.KdMatch,Kah.KdNr,Kah.RefAuftrag FROM " +tableSuffix+ ".Kah WHERE Kah.RefAuftrag = '' ORDER BY Kah.Date DESC;"; 
-
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT Nr,Date,KdMatch,KdNr,RefAuftrag FROM " +tableSuffix+ "_Kah WHERE RefAuftrag = '' ORDER BY Date DESC;"; 
+        }
+        
+        else{
+            return "SELECT Kah.Nr,Kah.Date,Kah.KdMatch,Kah.KdNr,Kah.RefAuftrag FROM " +tableSuffix+ ".Kah WHERE Kah.RefAuftrag = '' ORDER BY Kah.Date DESC;"; 
+        }  
     }
       
     public String getSQLAssignmentWithoutOfferModelSearch(){
-        return "SELECT Kah.Nr,Kah.Date,Kah.KdMatch,Kah.KdNr,Kah.RefAuftrag FROM " +tableSuffix+ ".Kah WHERE Kah.RefAuftrag = '' AND Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"'" + "ORDER BY Kah.Date DESC;";
-
+        
+        if(this.engine.equals("MySQL")){
+           return "SELECT Nr,Date,KdMatch,KdNr,RefAuftrag FROM " +tableSuffix+ "_Kah WHERE RefAuftrag = '' AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"'" + "ORDER BY Date DESC;";
+        }
+        
+        else{
+            return "SELECT Kah.Nr,Kah.Date,Kah.KdMatch,Kah.KdNr,Kah.RefAuftrag FROM " +tableSuffix+ ".Kah WHERE Kah.RefAuftrag = '' AND Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"'" + "ORDER BY Kah.Date DESC;";
+        }
+        
     }
     
     
     public String getSQLCountAssignmentWithoutOffer() {
-            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE " +tableSuffix+ ".Kah.RefAuftrag= '';";         
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Kah WHERE RefAuftrag= '';"; 
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE " +tableSuffix+ ".Kah.RefAuftrag= '';";
+        }
+                     
     }
     
     public String getSQLCountAssignmentWithoutOfferSearch() {
-            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE " +tableSuffix+ ".Kah.RefAuftrag= '' AND Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";        
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Kah WHERE RefAuftrag= '' AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE " +tableSuffix+ ".Kah.RefAuftrag= '' AND Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+                    
     }
     
     
     public String getSQLCountAssignmentWithOffer() {
-            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE NOT " +tableSuffix+ ".Kah.RefAuftrag= '';";         
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Kah WHERE NOT RefAuftrag= '';"; 
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE NOT " +tableSuffix+ ".Kah.RefAuftrag= '';";
+        }
+                     
     }
     
     public String getSQLCountAssignmentWithOfferSearch() {
-            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE NOT " +tableSuffix+ ".Kah.RefAuftrag= '' AND Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";        
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_Kah WHERE NOT RefAuftrag= '' AND Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".Kah WHERE NOT " +tableSuffix+ ".Kah.RefAuftrag= '' AND Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+                    
     }
     
 
     public String getSQLCountAssignmentAllOfferWithoutAssignment(){
-        return "SELECT COUNT (Kah.RefAuftrag) FROM " +tableSuffix+ ".Kah ;";
+        
+        if(this.engine.equals("MySQL")){
+           return "SELECT COUNT(RefAuftrag) FROM " +tableSuffix+ "_Kah ;"; 
+        }
+        
+        else{
+            return "SELECT COUNT (Kah.RefAuftrag) FROM " +tableSuffix+ ".Kah ;";
+        }
+        
     }
     
     
     public String getSQLCountAssignmentAllOfferWithoutAssignmentSearch(){
-        return "SELECT COUNT (Kah.RefAuftrag) FROM " +tableSuffix+ ".Kah WHERE Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(RefAuftrag) FROM " +tableSuffix+ "_Kah WHERE Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
+        else{
+            return "SELECT COUNT (Kah.RefAuftrag) FROM " +tableSuffix+ ".Kah WHERE Kah.Date BETWEEN" + "'" + this.searchFrom +"'" + "AND" + "'" + this.searchTo +"';";
+        }
+        
     }
     
 
@@ -130,33 +272,89 @@ public class SQLQueries {
     
     
     public String getSQLNegativeStockModel(){
-        return "SELECT " +tableSuffix+ ".ArtBestand.ArtNr, " +tableSuffix+ ".ArtBestand.Ist, " +tableSuffix+ ".Art.Kst, " +tableSuffix+ ".Art.WHG," +tableSuffix+ ".ArtBestand.Lager FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist < 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST' ORDER BY " +tableSuffix+ ".ArtBestand.Ist ;"; 
+        
+        if(engine.equals("MySQL")){
+            return "SELECT ArtNr, Ist, Kst, WHG,Lager FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtNr = Art.Nr WHERE Ist < 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST' ORDER BY Ist ;"; 
+        }
+        
+        else{
+            return "SELECT " +tableSuffix+ ".ArtBestand.ArtNr, " +tableSuffix+ ".ArtBestand.Ist, " +tableSuffix+ ".Art.Kst, " +tableSuffix+ ".Art.WHG," +tableSuffix+ ".ArtBestand.Lager FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist < 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST' ORDER BY " +tableSuffix+ ".ArtBestand.Ist ;"; 
 
+        }
+        
     }
     
     public String getSQLCountNegativeStock(){
-        return "SELECT COUNT (*) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist < 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr ArtBestand.Ist < 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist < 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        }
+        
     }
     
     
     public String getSQLSumNegativeStock(){
-        return "SELECT SUM (" +tableSuffix+ ".ArtBestand.Ist) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist < 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT SUM(ArtBestand.Ist) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist < 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+        }
+        
+        else{
+            return "SELECT SUM (" +tableSuffix+ ".ArtBestand.Ist) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist < 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        }
+        
     }
     
     public String getSQCountPositiveStock(){
-        return "SELECT COUNT (*) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist > 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist > 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+        }
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist > 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        }
     }
     
     public String getSQLSumPostitiveStock(){
-        return "SELECT SUM (" +tableSuffix+ ".ArtBestand.Ist) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist > 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT SUM(ArtBestand.Ist) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist > 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+        }
+        
+        else{
+            return "SELECT SUM (" +tableSuffix+ ".ArtBestand.Ist) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist > 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        }
+        
     }
     
     public String getSQCountNullStock(){
-        return "SELECT COUNT (*) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist = 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        
+        if(this.engine.equals("MySQL")){
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist = 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' Art.WHG = 'DIENST';";
+        }
+        
+        else{
+            return "SELECT COUNT (*) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist = 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+    
+        }
+        
     }
     
     public String getSQLSumNullStock(){
-        return "SELECT SUM (" +tableSuffix+ ".ArtBestand.Ist) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist = 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        
+        if(this.engine.equals("MySQL")){
+           return "SELECT SUM(ArtBestand.Ist) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist = 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';"; 
+        }
+        
+        else{
+            return "SELECT SUM (" +tableSuffix+ ".ArtBestand.Ist) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist = 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
+        }
+        
+        
     }
      
 }

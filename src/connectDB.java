@@ -30,7 +30,7 @@ public class connectDB {
         }
         
         else{
-            this.url = "jdbc:mysql://" + this.server + ":" + this.port +";DatabaseName=" + this.database;
+            this.url = "jdbc:mysql://" + this.server + ":" + this.port +"/" + this.database;
             this.driver = "com.mysql.jdbc.Driver";
         }
         
