@@ -274,7 +274,7 @@ public class SQLQueries {
     public String getSQLNegativeStockModel(){
         
         if(engine.equals("MySQL")){
-            return "SELECT ArtNr, Ist, Kst, WHG,Lager FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtNr = Art.Nr WHERE Ist < 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST' ORDER BY Ist ;"; 
+            return "SELECT ArtNr, Ist, Kst, WHG, " +tableSuffix+ "_ArtBestand.Lager as Lager FROM " +tableSuffix+ "_Art INNER JOIN " +tableSuffix+ "_ArtBestand ON ArtNr = Nr WHERE Ist < 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST' ORDER BY Ist"; 
         }
         
         else{
@@ -287,7 +287,7 @@ public class SQLQueries {
     public String getSQLCountNegativeStock(){
         
         if(this.engine.equals("MySQL")){
-            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr ArtBestand.Ist < 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtNr = Nr WHERE Ist < 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST';";
         }
         
         else{
@@ -300,7 +300,7 @@ public class SQLQueries {
     public String getSQLSumNegativeStock(){
         
         if(this.engine.equals("MySQL")){
-            return "SELECT SUM(ArtBestand.Ist) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist < 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+            return "SELECT SUM(Ist) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtNr = Nr WHERE Ist < 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST';";
         }
         
         else{
@@ -312,7 +312,7 @@ public class SQLQueries {
     public String getSQCountPositiveStock(){
         
         if(this.engine.equals("MySQL")){
-            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist > 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtNr = Nr WHERE Ist > 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST';";
         }
         else{
             return "SELECT COUNT (*) FROM " +tableSuffix+ ".ArtBestand INNER JOIN " +tableSuffix+ ".Art ON " +tableSuffix+ ".ArtBestand.ArtNr = " +tableSuffix+ ".Art.Nr WHERE " +tableSuffix+ ".ArtBestand.Ist > 0 AND " +tableSuffix+ ".Art.Kst = '5410' AND NOT " +tableSuffix+ ".Art.WHG = 'TEXT' AND NOT " +tableSuffix+ ".Art.WHG = 'DIENST';";
@@ -322,7 +322,7 @@ public class SQLQueries {
     public String getSQLSumPostitiveStock(){
         
         if(this.engine.equals("MySQL")){
-            return "SELECT SUM(ArtBestand.Ist) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist > 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' AND NOT Art.WHG = 'DIENST';";
+            return "SELECT SUM(Ist) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtNr = Nr WHERE Ist > 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST';";
         }
         
         else{
@@ -334,7 +334,7 @@ public class SQLQueries {
     public String getSQCountNullStock(){
         
         if(this.engine.equals("MySQL")){
-            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtBestand.ArtNr = Art.Nr WHERE ArtBestand.Ist = 0 AND Art.Kst = '5410' AND NOT Art.WHG = 'TEXT' Art.WHG = 'DIENST';";
+            return "SELECT COUNT(*) FROM " +tableSuffix+ "_ArtBestand INNER JOIN " +tableSuffix+ "_Art ON ArtNr = Nr WHERE Ist = 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST';";
         }
         
         else{
