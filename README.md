@@ -9,7 +9,8 @@ JRE 8
 http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 functional MySQL/MS SQL server
 
-
+To execute the programm without compiling, please go to dist folder. 
+You will find a jar file named Abschlussprojekt.jar.
 
 Icons are from: 
 
