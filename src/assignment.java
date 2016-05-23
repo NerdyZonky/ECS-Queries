@@ -5,9 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
-
-
 public class assignment extends javax.swing.JFrame {
     
     properties prop = new properties();
@@ -26,7 +23,7 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneSumNetto.setText(queries.sqlCommand(sql.getSQLSumNettoAssigmentNotDone()));
             this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssigmentDone()));
             this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssigmentAll()));
-            this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+            this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
         }
         
         if(prop.getView("view").equals("assignmentWithoutOffer")){
@@ -42,7 +39,7 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithoutOffer()));
             this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithOffer()));
             this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssignmentAllOfferWithoutAssignment()));
-            this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText())); 
+            this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText())); 
             
             
 
@@ -317,8 +314,7 @@ public class assignment extends javax.swing.JFrame {
 
     private void offerNotDoneSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offerNotDoneSearchActionPerformed
         
-        
-        //properties prop = new properties();
+       
         SQLQueries sql = new SQLQueries();
         queries queries = new queries();
    
@@ -335,7 +331,7 @@ public class assignment extends javax.swing.JFrame {
                 this.offerNotDoneSumNetto.setText(queries.sqlCommand(sql.getSQLSumNettoAssigmentNotDone()));
                 this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssigmentDone()));
                 this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssigmentAll()));
-                this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+                this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
                 
                 
                 
@@ -350,7 +346,7 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneSumNetto.setText(queries.sqlCommand(sql.getSQLSumNettoAssigmentNotDoneSearch()));
             this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssigmentDoneSearch()));
             this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssigmentAllSearch()));
-            this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+            this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
   
             }  
         }
@@ -363,7 +359,7 @@ public class assignment extends javax.swing.JFrame {
                 this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithoutOffer()));
                 this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithOffer()));
                 this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssignmentAllOfferWithoutAssignment()));
-                this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText())); 
+                this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText())); 
             }
             
             else{
@@ -372,7 +368,7 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithoutOfferSearch()));
             this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithOfferSearch()));
             this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssignmentAllOfferWithoutAssignmentSearch()));
-            this.offerNotDonePercent.setText(queries.roundValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+            this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
             }
         }
         

@@ -2,10 +2,14 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+/**This class shows login window */
 public class Login extends javax.swing.JFrame {
     
-    
+    /** get SQL connection object */
     connectDB con = new connectDB();
+    
+    /** get SQL properties object */
     properties prop = new properties();
     
     private String server;
@@ -16,7 +20,9 @@ public class Login extends javax.swing.JFrame {
     private String engine;
     private String principal;
    
-    
+    /**
+     *
+     */
     public Login() {
         initComponents();
  
@@ -258,20 +264,18 @@ public class Login extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-       
-        
-     
-       this.server = this.ServerField.getText();
-       this.port = this.PortField.getText();
-       this.database = this.DatabaseField.getText();
-       this.user = this.UserField.getText();
-       this.programm = this.programmField.getSelectedItem().toString();
-       this.engine = this.engineField.getSelectedItem().toString();
-       this.principal = this.principalField.getSelectedItem().toString();
+ 
+       this.server = this.ServerField.getText(); /**get Value of ServerField and point it to server variable */
+       this.port = this.PortField.getText(); /**get Value of PortField and point it to port variable */
+       this.database = this.DatabaseField.getText(); /**get Value of DatabaseField and point it to database variable */
+       this.user = this.UserField.getText(); /**get Value of UserField and point it to user variable */
+       this.programm = this.programmField.getSelectedItem().toString(); /**get Value of programmField and point it to programm variable convert variable to string */
+       this.engine = this.engineField.getSelectedItem().toString(); /**get Value of engineField and point it to engine variable convert variable to string */
+       this.principal = this.principalField.getSelectedItem().toString(); /**get Value of principalField and point it to principal variable convert variable to string */
        
        
        
+       /**if variable programm equals value "TFW/TFO" then variable program is TFW */
        if(this.programm.equals("TFW/TFO")){
            this.programm = "TFW";
        }

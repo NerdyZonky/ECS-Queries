@@ -274,7 +274,7 @@ public class SQLQueries {
     public String getSQLNegativeStockModel(){
         
         if(engine.equals("MySQL")){
-            return "SELECT ArtNr, Ist, Kst, WHG, " +tableSuffix+ "_ArtBestand.Lager as Lager FROM " +tableSuffix+ "_Art INNER JOIN " +tableSuffix+ "_ArtBestand ON ArtNr = Nr WHERE Ist < 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST' ORDER BY Ist"; 
+            return "SELECT ArtNr, Ist, Kst, WHG, " +tableSuffix+ "_ArtBestand.Lager as Lager FROM " +tableSuffix+ "_Art INNER JOIN " +tableSuffix+ "_ArtBestand ON ArtNr = Nr WHERE Ist < 0 AND Kst = '5410' AND NOT WHG = 'TEXT' AND NOT WHG = 'DIENST' ORDER BY Ist;"; 
         }
         
         else{

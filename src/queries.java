@@ -143,12 +143,11 @@ public class queries {
             }  
             return null; 
         }
-    
+   
     
     
     // round values and get percent
-    
-    public String roundValues(String value1, String value2){
+    public String roundPercentValues(String value1, String value2){
 
         double storevalue1DBL = Double.parseDouble(value1); //convert value to double
         double storevalue2DBL = Double.parseDouble(value2);       //convert value to double
