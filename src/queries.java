@@ -2,6 +2,13 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**@author Marco Schubert*/
+/**sets jTable model and executes SQL queries from SQLQueries class;
+*gets values from properties class;
+*sets SQL connection from connectDB class;
+*execute SQL query through SQLQueries class;
+*decrypts password through EncryptDecryptPass class 
+*/
 public class queries {
  
     private final String server;

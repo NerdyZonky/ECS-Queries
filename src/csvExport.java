@@ -9,16 +9,16 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-
+/**@author Marco Schubert*/
+/**generates a csv file from current jTable in assignment class and place file on choosen path of destination;
+*gets jTable thorugh assignment class
+*/
 public class csvExport {
     
     
     FileChooser choose = new FileChooser();
     assignment as = new assignment();
-    
-    
-    
-  
+
     public void writeCSVfile(JTable table) throws IOException, ClassNotFoundException, SQLException{
         Writer writer = null;
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
@@ -44,10 +44,7 @@ public class csvExport {
                 }
                 writer.write(buffer.toString() + "\r\n");
             }
-          
-            
-            //writer.write("\"ItemCode\","+"\""+as.getText()+"\"");
-            
+
         } finally {
               writer.close();
         }

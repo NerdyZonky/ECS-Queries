@@ -1,3 +1,7 @@
+/**@author Marco Schubert*/
+/**choose which kind of query you want to see;
+*sets view property
+*/
 
 public class launcher extends javax.swing.JFrame {
     

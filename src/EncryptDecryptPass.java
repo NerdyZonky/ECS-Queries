@@ -1,8 +1,12 @@
+/**@author Marco Schubert*/
+/**encrypts/decrypts password
+*gets values from properties class 
+*/
 
 public class EncryptDecryptPass {
     
     properties prop = new properties();
-  
+
     public EncryptDecryptPass(){}
        
 
@@ -38,12 +42,7 @@ public class EncryptDecryptPass {
         
         return decryptedPassword;
     }
-
     
-    
-   
-        
-        
     }
         
     

@@ -1,5 +1,11 @@
 import java.sql.*;
 
+
+
+/**@author Marco Schubert*/
+/**loads MySQL or MS-SQL driver and set the connection to SQL Server;
+*gets values through properties class from properties file 
+*/
 public class connectDB {
     
     Connection con;
@@ -12,8 +18,7 @@ public class connectDB {
     private String url;
     private String driver;
     private boolean pass = false;
-    
-    
+
     public connectDB(){}
 
     public Connection connect(String server, String port, String database, String user, String password){

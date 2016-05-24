@@ -4,7 +4,12 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**@author Marco Schubert*/
+/**builds GUI of the main window;
+*gets values through poperties class from properties file;
+*gets SQL command through SQLQueries class;
+*executes SQL commands through queries class
+*/
 public class assignment extends javax.swing.JFrame {
     
     properties prop = new properties();

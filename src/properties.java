@@ -5,7 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
-
+/**@author Marco Schubert*/
+/**stores all important values into properties file in src folder*/
 public class properties {
     
     private String server;

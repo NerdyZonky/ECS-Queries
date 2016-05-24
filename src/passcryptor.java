@@ -4,7 +4,9 @@ import javax.crypto.spec.SecretKeySpec;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-
+/**@author Marco Schubert*/
+/**crypts user password and stores crypted password in properties class;
+enrypt and decrypt methods are used in EncryptDecryptPass class*/
 public class passcryptor {
     
     private static final String ALGORITHM = "AES";

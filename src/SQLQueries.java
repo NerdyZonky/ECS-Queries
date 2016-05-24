@@ -2,6 +2,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
+/**@author Marco Schubert*/
+/**returns String of SQL query syntax;
+*gets values from poperties class*/
 public class SQLQueries {
     
     String searchFrom;
@@ -10,8 +13,8 @@ public class SQLQueries {
     Statement stm;
     
     properties prop = new properties();
-    private String tableSuffix = prop.getProperty("tableSuffix");
-    private String engine = prop.getProperty("engine");
+    private final String tableSuffix = prop.getProperty("tableSuffix");
+    private final String engine = prop.getProperty("engine");
    
 
     public SQLQueries(){}
