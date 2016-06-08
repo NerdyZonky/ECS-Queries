@@ -135,6 +135,7 @@
               <Image iconType="3" name="/images/boxes.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value=" Lagerkennziffern"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
