@@ -1,4 +1,7 @@
 
+import java.awt.Color;
+
+
 /**@author Marco Schubert*/
 /**first executable class of programm
 *sets all values given by user and stores values through properties class in properties file;
@@ -29,8 +32,6 @@ public class Login extends javax.swing.JFrame {
         this.jLabel10.setVisible(false);
         this.jLabel13.setVisible(false);
         this.jLabel12.setVisible(false);
-        
-        
  
     }
 
@@ -88,7 +89,7 @@ public class Login extends javax.swing.JFrame {
 
         DatabaseField.setText("Taifun");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/icons/login.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,21 +122,21 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/icons/logo-mysql.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo-mysql.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/icons/logo-mssql.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo-mssql.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/icons/MHW.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MHW.png"))); // NOI18N
         jButton6.setText("MWH");
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -145,7 +146,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/icons/tfw.png")); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tfw.png"))); // NOI18N
         jButton7.setText("TFW");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -381,7 +382,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        this.jLabel13.setVisible(true);
+       this.jLabel13.setVisible(true);
         this.jLabel10.setVisible(false);
         this.jLabel12.setVisible(false);
         
@@ -390,11 +391,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        
         this.jLabel12.setVisible(true);
         this.jLabel10.setVisible(false);
         this.jLabel13.setVisible(false);
                 
-        
+     
         this.programm = "TFW";
         System.out.println(this.programm);
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -403,6 +405,7 @@ public class Login extends javax.swing.JFrame {
         this.engine = "MySQL";
         this.jLabel7.setVisible(true);
         this.jLabel9.setVisible(false);
+        
 
         System.out.println(this.engine);
     }//GEN-LAST:event_jButton3ActionPerformed

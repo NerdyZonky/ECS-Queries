@@ -232,7 +232,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/icons/login.png"/>
+          <Image iconType="3" name="/images/login.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
@@ -294,7 +294,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/icons/logo-mysql.png"/>
+          <Image iconType="3" name="/images/logo-mysql.png"/>
         </Property>
       </Properties>
       <Events>
@@ -304,7 +304,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/icons/logo-mssql.png"/>
+          <Image iconType="3" name="/images/logo-mssql.png"/>
         </Property>
       </Properties>
       <Events>
@@ -314,7 +314,7 @@
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/icons/MHW.png"/>
+          <Image iconType="3" name="/images/MHW.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="MWH"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
@@ -327,7 +327,7 @@
     <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/marco/Downloads/icons/tfw.png"/>
+          <Image iconType="3" name="/images/tfw.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="TFW"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
