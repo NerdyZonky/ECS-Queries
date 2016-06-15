@@ -156,7 +156,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/icons/TFO.png")); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/TFO.png"))); // NOI18N
         jButton8.setText("TFO");
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
