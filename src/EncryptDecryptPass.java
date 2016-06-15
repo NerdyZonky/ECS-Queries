@@ -3,6 +3,7 @@
 *gets values from properties class 
 */
 
+
 public class EncryptDecryptPass {
     
     properties prop = new properties();

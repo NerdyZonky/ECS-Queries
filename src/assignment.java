@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.table.DefaultTableModel;
+
 /**@author Marco Schubert*/
 /**builds GUI of the main window;
 *gets values through poperties class from properties file;
@@ -41,13 +43,11 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneSumNetto.setVisible(false);
             
             this.offerNotDoneTable.setModel(queries.getOfferWithoutAssignmentModel(sql.getSQLAssignmentWithoutOfferModel()));
+        
             this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithoutOffer()));
             this.countOfferDone.setText(queries.sqlCommand(sql.getSQLCountAssignmentWithOffer()));
             this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssignmentAllOfferWithoutAssignment()));
             this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText())); 
-            
-            
-
             
         }
         
@@ -72,10 +72,110 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneSumEK.setText(queries.sqlCommand(sql.getSQLSumPostitiveStock()));
 
         }
-   
+        
+        if(prop.getView("view").equals("punctualDelivery")){
+            this.jLabel2.setText("Lieferverzug");
+            this.jLabel9.setText("Pünktlich:");
+            this.jLabel10.setText("Gesamt:");
+            this.jLabel7.setVisible(false);
+            this.offerNotDoneSumEK.setVisible(false);
+            this.jLabel8.setVisible(false);
+            this.offerNotDoneSumNetto.setVisible(false);
+            this.offerNotDoneTable.setModel(queries.getPunctualDeliveryModel(sql.getSQLPunctualDeliveryModel()));
+            this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLSumNotPunctualPunctualDelivery()));
+            this.countOfferDone.setText(queries.sqlCommand(sql.getSQLSumPunctualPunctualDelivery()));
+            this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+  
+            /**cast offerNotDoneAmount and countOfferDone to int and add them 
+            together to get total amount*/
+            int ondaINT = Integer.valueOf(this.offerNotDoneAmount.getText());
+            int codINT = Integer.valueOf(this.countOfferDone.getText());
+            int resINT = ondaINT + codINT; 
+            
+            /**cast amount back to string*/
+            this.offerAll.setText(String.valueOf(resINT));
+            this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+        }
+        
+        
+        if(prop.getView("view").equals("grossProfit")){
+            this.jLabel2.setText("Erträge");
+            this.jLabel5.setText("Gesamt:");
+            this.jLabel3.setText("Jahr");
+            
+            this.jLabel5.setVisible(false);
+            this.offerNotDoneAmount.setVisible(false);
+            this.jLabel6.setVisible(false);
+            this.offerNotDonePercent.setVisible(false);
+            this.jLabel9.setVisible(false);
+            this.countOfferDone.setVisible(false);
+            this.jLabel10.setVisible(false);
+            this.offerAll.setVisible(false);
+            this.jLabel7.setVisible(false);
+            this.offerNotDoneSumEK.setVisible(false);
+            this.jLabel8.setVisible(false);
+            this.offerNotDoneSumNetto.setVisible(false);
+            this.jLabel4.setVisible(false);
+            this.offerNotDoneSearchTo.setVisible(false);
+            
+            this.offerNotDoneTable.setModel(queries.getGrossProfitModel(sql.getSQLGrossProfitModel()));
+
+
+        }
+        
+        if(prop.getView("view").equals("sales")){
+            this.jLabel2.setText("Umsätze");
+            this.jLabel3.setText("Jahr");
+            
+            
+            this.jLabel5.setVisible(false);
+            this.offerNotDoneAmount.setVisible(false);
+            this.jLabel6.setVisible(false);
+            this.offerNotDonePercent.setVisible(false);
+            this.jLabel9.setVisible(false);
+            this.countOfferDone.setVisible(false);
+            this.jLabel10.setVisible(false);
+            this.offerAll.setVisible(false);
+            this.jLabel7.setVisible(false);
+            this.offerNotDoneSumEK.setVisible(false);
+            this.jLabel8.setVisible(false);
+            this.offerNotDoneSumNetto.setVisible(false);
+            this.jLabel4.setVisible(false);
+            this.offerNotDoneSearchTo.setVisible(false);
+            
+            this.offerNotDoneTable.setModel(queries.getSalesModel(sql.getSQLSalesModel()));
+
+
+        }
+        
+        
+        if(prop.getView("view").equals("margin")){
+            this.jLabel2.setText("Marge");
+            this.jLabel3.setText("Nr.");
+            
+            
+            this.jLabel5.setVisible(false);
+            this.offerNotDoneAmount.setVisible(false);
+            this.jLabel6.setVisible(false);
+            this.offerNotDonePercent.setVisible(false);
+            this.jLabel9.setVisible(false);
+            this.countOfferDone.setVisible(false);
+            this.jLabel10.setVisible(false);
+            this.offerAll.setVisible(false);
+            this.jLabel7.setVisible(false);
+            this.offerNotDoneSumEK.setVisible(false);
+            this.jLabel8.setVisible(false);
+            this.offerNotDoneSumNetto.setVisible(false);
+            this.jLabel4.setVisible(false);
+            this.offerNotDoneSearchTo.setVisible(false);
+            
+            this.offerNotDoneTable.setModel(queries.getMarginModel(sql.getSQLMarginModel()));
+
+        }
+        
+        
+        
     }
-    
-    
     
 
     @SuppressWarnings("unchecked")
@@ -85,6 +185,10 @@ public class assignment extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jScrollBar1 = new javax.swing.JScrollBar();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         offerNotDoneTable = new javax.swing.JTable();
@@ -106,7 +210,11 @@ public class assignment extends javax.swing.JFrame {
         offerAll = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         countOfferDone = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jInternalFrame1.setVisible(true);
 
@@ -122,6 +230,14 @@ public class assignment extends javax.swing.JFrame {
         );
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -203,13 +319,35 @@ public class assignment extends javax.swing.JFrame {
         countOfferDone.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         countOfferDone.setText("0");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/notebook.png"))); // NOI18N
-        jButton2.setText("CSV Export");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.setText("File");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/icons/xlsBIG.png")); // NOI18N
+        jMenuItem1.setText("Export");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_COMMA, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/settings.png")); // NOI18N
+        jMenuItem2.setText("Settings");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,11 +357,6 @@ public class assignment extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(200, 200, 200))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
@@ -232,15 +365,13 @@ public class assignment extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6))
                                 .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(offerNotDoneAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(offerNotDonePercent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(offerNotDonePercent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(offerNotDoneAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(offerAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -253,8 +384,7 @@ public class assignment extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(offerNotDoneSumEK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(offerNotDoneSumNetto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(142, 142, 142)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,26 +396,28 @@ public class assignment extends javax.swing.JFrame {
                         .addComponent(offerNotDoneSearchTo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(offerNotDoneSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(21, 580, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(271, 271, 271)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(offerNotDoneSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(offerNotDoneSearchFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(offerNotDoneSearchTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -294,8 +426,7 @@ public class assignment extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(countOfferDone)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(offerNotDoneSumEK)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+                    .addComponent(offerNotDoneSumEK))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -337,9 +468,6 @@ public class assignment extends javax.swing.JFrame {
                 this.offerAll.setText(queries.sqlCommand(sql.getSQLCountAssigmentAll()));
                 this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
                 
-                
-                
-  
             }
             
             else{
@@ -385,7 +513,100 @@ public class assignment extends javax.swing.JFrame {
             this.offerNotDoneSumEK.setText(queries.sqlCommand(sql.getSQLSumPostitiveStock()));
 
         }
-     
+        
+        if(prop.getView("view").equals("punctualDelivery")){
+            if(searchFrom.equals("") && searchTo.equals("")){
+                this.offerNotDoneTable.setModel(queries.getPunctualDeliveryModel(sql.getSQLPunctualDeliveryModel()));
+                this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLSumNotPunctualPunctualDelivery()));
+                this.countOfferDone.setText(queries.sqlCommand(sql.getSQLSumPunctualPunctualDelivery()));
+                     
+                /**cast offerNotDoneAmount and countOfferDone to int and add them 
+                together to get total amount*/
+                int ondaINT = Integer.valueOf(this.offerNotDoneAmount.getText());
+                int codINT = Integer.valueOf(this.countOfferDone.getText());
+                int resINT = ondaINT + codINT; 
+            
+                /**cast amount back to string*/
+                this.offerAll.setText(String.valueOf(resINT));
+                this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+ 
+            }
+            
+            else{
+                sql.getSQLSearch(searchFrom, searchTo);
+                this.offerNotDoneTable.setModel(queries.getPunctualDeliveryModel(sql.getSQLPunctualDeliveryModelSearch()));
+                this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLSumNotPunctualPunctualDeliverySearch()));
+                this.countOfferDone.setText(queries.sqlCommand(sql.getSQLSumPunctualPunctualDeliverySearch()));
+
+                /**cast offerNotDoneAmount and countOfferDone to int and add them 
+                together to get total amount*/
+                int ondaINT = Integer.valueOf(this.offerNotDoneAmount.getText());
+                int codINT = Integer.valueOf(this.countOfferDone.getText());
+                int resINT = ondaINT + codINT; 
+            
+                /**cast amount back to string*/
+                this.offerAll.setText(String.valueOf(resINT));
+                this.offerNotDonePercent.setText(queries.roundPercentValues(this.offerNotDoneAmount.getText(), this.offerAll.getText()));
+            
+            }
+            
+        }
+        
+        
+        if(prop.getView("view").equals("grossProfit")){
+            if(searchFrom.equals("")){
+                this.offerNotDoneTable.setModel(queries.getGrossProfitModel(sql.getSQLGrossProfitModel()));
+                this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLGrossProfitTotal()));
+                
+ 
+            }
+            
+            else{
+                sql.getSQLYear(searchFrom);
+                this.offerNotDoneTable.setModel(queries.getGrossProfitModel(sql.getSQLGrossProfitModelSearch()));
+                this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLGrossProfitTotalSearch()));
+
+        
+            
+            }
+            
+        }
+        
+       
+       if(prop.getView("view").equals("sales")){
+            if(searchFrom.equals("")){
+                this.offerNotDoneTable.setModel(queries.getSalesModel(sql.getSQLSalesModel()));
+                this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLSalesTotal()));
+                
+ 
+            }
+            
+            else{
+                sql.getSQLYear(searchFrom);
+                this.offerNotDoneTable.setModel(queries.getSalesModel(sql.getSQLSalesModelSearch()));
+                this.offerNotDoneAmount.setText(queries.sqlCommand(sql.getSQLSalesTotalSearch()));
+
+        
+            
+            }
+            
+        }
+       
+       
+       if(prop.getView("view").equals("margin")){
+            if(searchFrom.equals("")){
+                this.offerNotDoneTable.setModel(queries.getMarginModel(sql.getSQLMarginModel()));
+ 
+                
+ 
+            }
+            
+            else{
+                sql.getSQLYear(searchFrom);
+                this.offerNotDoneTable.setModel(queries.getMarginModel(sql.getSQLMarginModelSearch()));
+       }
+            
+        }
     
     }//GEN-LAST:event_offerNotDoneSearchActionPerformed
 
@@ -393,16 +614,11 @@ public class assignment extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_offerNotDoneSearchFromActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         queries queries = new queries();
         csvExport csv = new csvExport();
         FileChooser chooser = new FileChooser();
-        
-    
-       
-        
-        
-        
+
         try {
             csv.writeCSVfile(offerNotDoneTable);
         } catch (IOException ex) {
@@ -412,7 +628,12 @@ public class assignment extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(assignment.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * 
@@ -455,7 +676,6 @@ public class assignment extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel countOfferDone;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel10;
@@ -467,6 +687,15 @@ public class assignment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel offerAll;
@@ -480,7 +709,5 @@ public class assignment extends javax.swing.JFrame {
     private javax.swing.JTable offerNotDoneTable;
     // End of variables declaration//GEN-END:variables
 
-    
-  
 }
 

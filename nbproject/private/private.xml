@@ -3,16 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/marco/github/FinalExam/src/Login.java</file>
-            <file>file:/home/marco/github/FinalExam/src/assignment.java</file>
-            <file>file:/home/marco/github/FinalExam/src/connectDB.java</file>
-            <file>file:/home/marco/github/FinalExam/src/properties.java</file>
-            <file>file:/home/marco/github/FinalExam/src/queries.java</file>
-            <file>file:/home/marco/github/FinalExam/src/SQLQueries.java</file>
-            <file>file:/home/marco/github/FinalExam/src/EncryptDecryptPass.java</file>
-            <file>file:/home/marco/github/FinalExam/src/launcher.java</file>
-            <file>file:/home/marco/github/FinalExam/src/passcryptor.java</file>
             <file>file:/home/marco/github/FinalExam/src/csvExport.java</file>
+            <file>file:/home/marco/github/FinalExam/src/SQLQueries.java</file>
+            <file>file:/home/marco/github/FinalExam/src/assignment.java</file>
+            <file>file:/home/marco/github/FinalExam/src/launcher.java</file>
+            <file>file:/home/marco/github/FinalExam/src/connectDB.java</file>
+            <file>file:/home/marco/github/FinalExam/src/Login.java</file>
+            <file>file:/home/marco/github/FinalExam/src/queries.java</file>
+            <file>file:/home/marco/github/FinalExam/src/properties.java</file>
             <file>file:/home/marco/github/FinalExam/src/FileChooser.java</file>
         </group>
     </open-files>

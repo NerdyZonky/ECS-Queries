@@ -1,12 +1,15 @@
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+
 
 
 /**@author Marco Schubert*/
@@ -20,34 +23,42 @@ public class csvExport {
     assignment as = new assignment();
 
     public void writeCSVfile(JTable table) throws IOException, ClassNotFoundException, SQLException{
-        Writer writer = null;
-        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-        int nRow = dtm.getRowCount();
-        int nCol = dtm.getColumnCount();
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(choose.getPath()+".csv"), "utf-8"));
-
-            //write the header information
-            StringBuffer bufferHeader = new StringBuffer();
-            for (int j = 0; j < nCol; j++) {
-                bufferHeader.append(dtm.getColumnName(j));
-                if (j!=nCol) bufferHeader.append(", ");
-            }
-            writer.write(bufferHeader.toString() + "\r\n");
-
-           //write row information
-            for (int i = 0 ; i < nRow ; i++){
-                 StringBuffer buffer = new StringBuffer();
-                for (int j = 0 ; j < nCol ; j++){
-                    buffer.append(dtm.getValueAt(i,j));
-                    if (j!=nCol) buffer.append(", ");
-                }
-                writer.write(buffer.toString() + "\r\n");
-            }
-
-        } finally {
-              writer.close();
+        String file = "/home/marco/Downloads/test.xls";
+        TableModel model = table.getModel();
+        FileWriter out = new FileWriter(file);
+        String groupExport = "";
+        for (int i = 0; i < (model.getColumnCount()); i++) {//* disable export from TableHeaders
+            groupExport = String.valueOf(model.getColumnName(i));
+            out.write(String.valueOf(groupExport) + "\t");
         }
+        out.write("\n");
+        for (int i = 0; i < model.getRowCount(); i++) {
+            for (int j = 0; j < (model.getColumnCount()); j++) {
+                if (model.getValueAt(i, j) == null) {
+                    out.write("null" + "\t");
+                } else {
+                    groupExport = String.valueOf(model.getValueAt(i, j));
+                    out.write(String.valueOf(groupExport) + "\t");
+                }
+            }
+            
+            out.write("\n");
+        }
+        
+        
+        out.close();
     }
+    
+    
+
+    
+    
+    
+    
+ 
+    
+    
+    
+    
     
 }
